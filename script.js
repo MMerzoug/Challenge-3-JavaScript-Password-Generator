@@ -7,7 +7,7 @@ var uppercaseLetters = ('A','B','C','D','E','F','G','H','I','J','K','L','M','N',
 
 var numbers = ('1','2','3','4','5','6','7','8','9','0');
 
-var specialCharacters = (!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~);
+var specialCharacters = ('!@#$%^&*()_-+=');
 
 //Create a function to generate the password
 function generatePassword(passwordLength) { //This is a function that makes a random password. It takes a number as an input, which is the length of the password you want.
