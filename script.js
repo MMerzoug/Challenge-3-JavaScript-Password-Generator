@@ -1,13 +1,20 @@
+//This line finds the button on your webpage that has an id of "generate
+var generateBtn = document.querySelector("#generate");
+
 //Define the characters that can be used in the password
-var generateBtn = document.querySelector("#generate");//This line finds the button on your webpage that has an id of "generate
-
 var lowercaseLetters = ('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
-
 var uppercaseLetters = ('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
-
 var numbers = ('1','2','3','4','5','6','7','8','9','0');
-
 var specialCharacters = ('!@#$%^&*()_-+=');
+
+//alert (creates a pop up), confirm (Boolean true or false), prompt (returns a prompt) functions
+var input = prompt ("Would you like to include lowercase letters?");
+
+var didUserConfirm = ("confirm");
+alert (didUserConfirm);
+
+
+
 
 //Create a function to generate the password
 function generatePassword(passwordLength) { //This is a function that makes a random password. It takes a number as an input, which is the length of the password you want.
