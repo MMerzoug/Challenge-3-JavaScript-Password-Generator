@@ -7,17 +7,17 @@ var uppercaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 var numbers = '0123456789'.split('');
 var specialCharacters = '~`!@#$%^&*()_-=+{[}]|\\'.split('');
 
-//alert (creates a pop up), confirm (Boolean true or false), prompt (returns a prompt) functions
-
 //Create a function to generate the password
 function generatePassword() {
-  var passwordLength = prompt('How long do you want your password?');  // Choose your password length '4'
+  var passwordLength = prompt('How long do you want your password?');  
   // passwordLength is currently a string
   // when I parse an integer from it, I convert the string into a number
   if (parseInt(passwordLength) < 8 || parseInt(passwordLength) > 128) {
     alert('You need to type in an allowed number');
     return null;
   }
+
+  //alert (creates a pop up), confirm (Boolean true or false), prompt (returns a prompt) functions
   var wantsLowercase = confirm("Would you like to include lowercase letters?");
   var wantsUppercase = confirm("Would you like to include uppercase letters?");
   var wantsNumbers = confirm("Would you like to include numbers?");
@@ -52,15 +52,9 @@ function generatePassword() {
   return writePassword(password); 
 }
  
-//Call the function to generate a password
-// var password = generatePassword(passwordLength);//It's calling the generatePassword function with the argument passwordLength. 
-// console.log(password);
-//Write password to the #password input
-//is the declaration of a function named writePassword
-//var password = generatePassword(parseInt(passwordLength));//This function generates a random password of a specified length and returns it. The returned password is then stored in the password variable.
-//This function generates a random password of a specified length and returns it. The returned password is then stored in the password variable.
-//This line takes the generated password and puts it into the HTML element with
-
+//function writePassword(pw) {...} - This creates a task named writePassword that needs a password (pw) to do its job.
+//var passwordText = document.querySelector("#password"); - This line looks for a spot on your website labeled "password".
+//passwordText.value = pw; - This line places the password (pw) you provided into the spot found on your website.
 function writePassword(pw) { 
   var passwordText = document.querySelector("#password");
   passwordText.value = pw;
