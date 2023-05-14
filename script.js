@@ -2,11 +2,11 @@
 var generateBtn = document.querySelector("#generate");
 
 //Define the characters that can be used in the password
-var lowercaseLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-var uppercaseLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-var numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+var lowercaseLetters = 'abcdefghijklmnopqrstuvwxyz'.split('');
+var uppercaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+var numbers = '0123456789'.split('');
 var specialCharacters = '~`!@#$%^&*()_-=+{[}]|\\'.split('');
-console.log(specialCharacters)
+
 //alert (creates a pop up), confirm (Boolean true or false), prompt (returns a prompt) functions
 
 //Create a function to generate the password
@@ -23,9 +23,9 @@ function generatePassword() {
   var wantsNumbers = confirm("Would you like to include numbers?");
   var wantsSpecialCharacters = confirm("Would you like to include special Characters?");
 
+   // add variables to allCharacters array, and assign that as the new value to allCharacters, dependent upon confirm responses.
   var allCharacters = [];
   if (wantsLowercase) {
-    // add lowercaseLetters to allCharacters array, and assign that as the new value to allCharacters
     allCharacters = allCharacters.concat(lowercaseLetters);
   }
   if (wantsUppercase) {
@@ -37,29 +37,35 @@ function generatePassword() {
   if (wantsSpecialCharacters) {
     allCharacters = allCharacters.concat(specialCharacters);
   }
-  //This is a function that makes a random password. It takes a number as an input, which is the length of the password you want.
-  var password = ''; // Initializing a new variable named password and setting it to an empty string.
 
-  for (var i = 0; i < passwordLength; i++) { //This loop runs once for each character in the password. Each time, it adds a random character to the password.
+  //var password = ''; - This line creates a container to store your random password.
+  //  This says we're going to repeat the actions in the braces {...} a certain number of times (passwordLength times).
+  //var randomIndex = Math.floor(Math.random() * allCharacters.length); - This is picking a random location from the allCharacters list.
+  //password += allCharacters[randomIndex]; - This adds the character found at the random location to our password container.
+  //return writePassword(password); - Finally, this line sends our generated password to the writePassword function. However, this seems incorrect, because usually we'd simply return the generated password with return password;. The writePassword function should be called separately to use and display the password.
+
+  var password = ''; 
+  for (var i = 0; i < passwordLength; i++) { 
     var randomIndex = Math.floor(Math.random() * allCharacters.length);
-    password += allCharacters[randomIndex]; //This pair of lines is generating a random character from the allCharacters array or string and adding it to the password.
+    password += allCharacters[randomIndex]; 
   }
-  return writePassword(password); //The line return password; is used to specify the output of the function. Without a return statement, a function in JavaScript will return undefined
+  return writePassword(password); 
 }
-
+ 
 //Call the function to generate a password
-
 // var password = generatePassword(passwordLength);//It's calling the generatePassword function with the argument passwordLength. 
 // console.log(password);
-
 //Write password to the #password input
-function writePassword(pw) { //is the declaration of a function named writePassword
-  //var password = generatePassword(parseInt(passwordLength));//This function generates a random password of a specified length and returns it. The returned password is then stored in the password variable.
-  var passwordText = document.querySelector("#password");//This function generates a random password of a specified length and returns it. The returned password is then stored in the password variable.
+//is the declaration of a function named writePassword
+//var password = generatePassword(parseInt(passwordLength));//This function generates a random password of a specified length and returns it. The returned password is then stored in the password variable.
+//This function generates a random password of a specified length and returns it. The returned password is then stored in the password variable.
+//This line takes the generated password and puts it into the HTML element with
 
-  passwordText.value = pw;//This line takes the generated password and puts it into the HTML element with
+function writePassword(pw) { 
+  var passwordText = document.querySelector("#password");
+  passwordText.value = pw;
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", generatePassword);// This line tells the program to run the writePassword function when the button is clicked
-
+// This line tells the program to run the writePassword function when the button is clicked
+generateBtn.addEventListener("click", generatePassword);
